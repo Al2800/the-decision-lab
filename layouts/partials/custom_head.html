@@ -1,0 +1,93 @@
+<!-- Apply a saved theme choice before first paint (avoids a flash of the wrong scheme). -->
+<script>
+  try {
+    var t = localStorage.getItem('theme');
+    if (t) document.documentElement.setAttribute('data-theme', t);
+  } catch (e) {}
+</script>
+
+<!-- TextPad / plain-text-editor aesthetic.
+     Overrides typography only, so the theme's colours still apply. -->
+<style>
+  body {
+    font-family: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    font-size: 15px;
+    line-height: 1.65;
+    max-width: 78ch;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: inherit;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  /* ASCII-document headings: modest sizes, underlined rather than enlarged */
+  h1 { font-size: 1.25em; text-decoration: underline; text-underline-offset: 0.18em; }
+  h2 { font-size: 1.1em;  text-decoration: underline; text-underline-offset: 0.18em; }
+  h3 { font-size: 1em; }
+
+  /* Code fences already read as editor text; keep them a touch smaller */
+  pre, code { font-size: 0.92em; }
+</style>
+
+<!-- Colour schemes. Specificity note: the theme's own rules target bare :root,
+     so these (attribute-selected or later in source order) win when active. -->
+<style>
+  /* Paper palette: default on a light OS unless a manual choice was made */
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme]) {
+      --background-color: #f6f2e7; /* warm off-white paper */
+      --heading-color: #2b2925;    /* soft near-black ink */
+      --text-color: #403d37;       /* warm grey ink */
+      --link-color: #2f5fa3;       /* muted ink blue */
+      --visited-color: #7a63b8;
+      --blockquote-color: #55514a;
+    }
+  }
+
+  :root[data-theme='light'] {
+    --background-color: #f6f2e7;
+    --heading-color: #2b2925;
+    --text-color: #403d37;
+    --link-color: #2f5fa3;
+    --visited-color: #7a63b8;
+    --blockquote-color: #55514a;
+  }
+
+  /* Manual dark mirrors the theme's dark palette */
+  :root[data-theme='dark'] {
+    --background-color: #01242e;
+    --heading-color: #eee;
+    --text-color: #ddd;
+    --link-color: #8cc2dd;
+    --visited-color: #8b6fcb;
+    --blockquote-color: #ccc;
+  }
+
+  /* Diagram variants follow the effective scheme, not just the OS */
+  .diagram-dark { display: none; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) .diagram-dark { display: block; }
+    :root:not([data-theme]) .diagram-light { display: none; }
+  }
+  :root[data-theme='dark'] .diagram-dark { display: block; }
+  :root[data-theme='dark'] .diagram-light { display: none; }
+
+  /* Theme switcher button */
+  #theme-toggle {
+    position: fixed;
+    right: 1em;
+    bottom: 1em;
+    font: inherit;
+    font-size: 0.85em;
+    color: var(--text-color);
+    background: var(--background-color);
+    border: 1px solid var(--text-color);
+    border-radius: 3px;
+    padding: 0.2em 0.7em;
+    cursor: pointer;
+    opacity: 0.7;
+  }
+  #theme-toggle:hover { opacity: 1; }
+</style>

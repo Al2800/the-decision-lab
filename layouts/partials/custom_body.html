@@ -1,0 +1,35 @@
+<button id="theme-toggle" type="button">theme: auto</button>
+<script>
+  (function () {
+    var key = 'theme';
+    var order = ['auto', 'light', 'dark'];
+    var btn = document.getElementById('theme-toggle');
+
+    function current() {
+      return localStorage.getItem(key) || 'auto';
+    }
+
+    function apply(t) {
+      if (t === 'auto') {
+        document.documentElement.removeAttribute('data-theme');
+      } else {
+        document.documentElement.setAttribute('data-theme', t);
+      }
+      if (btn) btn.textContent = 'theme: ' + t;
+    }
+
+    apply(current());
+
+    if (btn) {
+      btn.addEventListener('click', function () {
+        var next = order[(order.indexOf(current()) + 1) % order.length];
+        if (next === 'auto') {
+          localStorage.removeItem(key);
+        } else {
+          localStorage.setItem(key, next);
+        }
+        apply(next);
+      });
+    }
+  })();
+</script>

@@ -1,0 +1,24 @@
+# TODO: replace with your pages.dev URL or custom domain before deploying.
+baseURL: "https://example.org/"
+locale: en-gb
+title: "The Decision Lab"
+theme: bearblog
+enableRobotsTXT: true
+
+# Bear Blog-style URLs: posts live at the root (/:slug/), no taxonomy/tag pages.
+disableKinds: ["taxonomy"]
+ignoreErrors: ["error-disable-taxonomy"]
+
+permalinks:
+  blog: "/:slug/"
+
+params:
+  description: "Notes on building a reproducible decision laboratory: data, forecasting, optimisation and AI agents — tested against Fantasy Premier League."
+  dateFormat: "02 Jan 2006"
+
+markup:
+  highlight:
+    style: friendly
+    lineNos: true
+    lineNumbersInTable: false
+    codeFences: true
