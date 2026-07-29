@@ -3,8 +3,7 @@
 A personal blog, built with [Hugo](https://gohugo.io/) and the vendored
 [Hugo Bear Blog](https://github.com/janraasch/hugo-bearblog) theme.
 Currently focused on one project: the FPL Agentic Decision Laboratory.
-
-House style: British English, academic tone, short posts, no filler.
+.
 Diagrams are tldraw wireframes embedded as SVG — never stock imagery.
 
 ## Local development
