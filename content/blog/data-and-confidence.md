@@ -2,7 +2,7 @@
 title: "The data behind the engine: sources, cadence and confidence"
 slug: "data-and-confidence"
 date: 2026-07-30
-draft: true
+draft: false
 description: "What the decision laboratory reads, how often, how much it trusts each source, and where each one enters the engine."
 ---
 
