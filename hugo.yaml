@@ -1,5 +1,4 @@
-# TODO: replace with your pages.dev URL or custom domain before deploying.
-baseURL: "https://example.org/"
+baseURL: "https://the-decision-lab.acampbell193.workers.dev/"
 locale: en-gb
 title: "The Decision Lab"
 theme: bearblog

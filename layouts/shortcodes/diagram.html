@@ -1,7 +1,11 @@
 {{ $base := .Get "src" }}
 {{ $alt := .Get "alt" | default "" }}
 <figure>
-  <img class="diagram-light" src="/diagrams/{{ $base }}-light.svg" alt="{{ $alt }}" loading="lazy">
-  <img class="diagram-dark" src="/diagrams/{{ $base }}-dark.svg" alt="" aria-hidden="true" loading="lazy">
+  <a href="/diagrams/{{ $base }}-light.svg" title="Open full size" class="diagram-light">
+    <img src="/diagrams/{{ $base }}-light.svg" alt="{{ $alt }}" loading="lazy">
+  </a>
+  <a href="/diagrams/{{ $base }}-dark.svg" title="Open full size" class="diagram-dark" aria-hidden="true">
+    <img src="/diagrams/{{ $base }}-dark.svg" alt="" loading="lazy">
+  </a>
   {{ with .Get "caption" }}<figcaption><small>{{ . }}</small></figcaption>{{ end }}
 </figure>

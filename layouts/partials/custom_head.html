@@ -74,6 +74,16 @@
   :root[data-theme='dark'] .diagram-dark { display: block; }
   :root[data-theme='dark'] .diagram-light { display: none; }
 
+  /* Diagrams break out slightly beyond the text measure */
+  figure {
+    width: 112%;
+    margin: 1.5em 0 1.5em -6%;
+  }
+  figure img { width: 100%; height: auto; }
+  @media (max-width: 900px) {
+    figure { width: 100%; margin-left: 0; }
+  }
+
   /* Theme switcher button */
   #theme-toggle {
     position: fixed;
