@@ -50,16 +50,11 @@ Each entry is a governance record, and the fields that we use are:
 | `review_date`                    | When we owe ourselves another look                     |
 
 
-**What agents may search.** By the time a decision is being made, the **evidence ledger** is the first port of call — whatever has already been gathered through the week (structured captures, plus unstructured items written in with a `source_id`). The decision agent searches that corpus deterministically. It is not starting from a blank open browse of the internet.
+On what agents may search: by the time a decision is being made, the first port of call is the **evidence ledger** — whatever has already been gathered through the week, structured captures plus unstructured items written in with a `source_id`. The decision agent searches that corpus; it is not starting from a blank open browse of the internet. Gathering earlier in the week is a separate job — another agent, or a manual citation, can pull from allowed sources into the ledger under the registry rules — so ideally most of what matters is already logged before the final call.
 
-Gathering earlier in the week is a separate job: another agent (or a manual citation) can pull from allowed sources into the ledger under registry rules, so most of what matters is already logged before the final call. At decision time the method is:
+At decision time that search is scoped to enabled sources (and manual citations that already carry a `source_id`), filtered so anything after the deadline is out of scope, and run deterministically over the ledger so the same query against the same corpus before the same deadline should give the same hits. If the decision agent still wants to clarify something or pull a bit more, that can go out for further consultation — still under registry and prompt rules, not a silent free-for-all mid-reasoning. I want most of the search done and logged already, but I also want that final agent able to see what is available, verify the decision, and collect more if it has to.
 
-1. **Scope from the registry** — only `enabled` sources (and manual citations that already carry a `source_id`) are in the search universe for that Gameweek.
-2. **Point-in-time filter** — every hit must satisfy `available_at ≤ deadline`. Same query after the whistle must not suddenly surface a later article.
-3. **Deterministic retrieval** — full-text / structured query over the ledger (passages, claims, document metadata). Same query, same corpus, same deadline → same hits.
-4. **Web only if needed** — if the decision agent wants to clarify something or pull a bit more, that can go out for further consultation — still under registry and prompt rules, not a silent free-for-all mid-reasoning. Ideally most of the search is already done and logged; I still want that final agent able to see what is available, verify the decision, and collect more if it has to.
-
-In practice: ask the search layer “what do we already hold on player X / fixture Y before this deadline?” → get that slice → one or more models read it and propose claims/adjustments → challenger or policy gates decide what reaches the decision plane — and only then, if needed, go wider.
+In practice that looks like asking the search layer what we already hold on a player or fixture before this deadline, getting that slice, having one or more models read it and propose claims or adjustments, then a challenger or policy gate deciding what reaches the decision plane — and only then, if needed, going wider.
 
 ## 3. The confidence model
 
