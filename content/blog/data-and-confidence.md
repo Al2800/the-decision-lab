@@ -24,11 +24,11 @@ So while I want to try and keep the engine immutable as we go through the season
 
 The live infrastructure for each game week, which will take in prices, fixtures, availability, ownership, will come from the FPL unofficial API - [https://github.com/mcclowes/fpl-oas](https://github.com/mcclowes/fpl-oas) - Very kindly updated and maintained by community contributors. Obviously being unofficial, it may not always be reliable and is reliant on those endpoints not being changed, but for now, this is what we'll be using and then we'll adapt that plan if not.
 
-From here, you can get quite a lot. We'll be bringing in status news, chances of playing, transfer counts, price changes, official strength ratings for attack, defence, home and away, average scores and deadlines. It also covers all that you would expect on fixture lists. With the season approaching this hasn't been formally tested.
+From here, you can get quite a lot. We'll be bringing in status news, chances of playing, transfer counts, price changes, official strength ratings for attack, defence, home and away, average scores and deadlines. To note, with the season approaching, this hasn't been formally tested.
 
-I'll be using betting odds, and I'm using Odds API at the moment, but I might start using a couple of different endpoints for this. I've been running with Betfair's historical data in replays. But Odds API gives a good free tier. 
+I'm using Odds API as the source of betting odds at the moment, but I might start using a couple of different endpoints for this. I've been running with Betfair's historical data in replays. But Odds API gives a good free tier. 
 
-This year I'm also integrating World Cup players and the potential impact on performance. Not an easy one to determine but I'm working the agents to understand some ways to use and for how long into the season. I don't want to overstate this element and reality alongside the other data points it will play a small part. It will also not affect that many players. 
+This year I'm also integrating a core on the potential impact on performance of the World Cup and effected players. Not an easy one to determine but I'm working the agents to understand some ways to use and for how long into the season. I don't want to overstate this element and reality alongside the other data points it will play a small part. It will also not affect that many players. 
 
 Each source carries a `max_staleness` and a failure policy: **stop** (no data beats wrong data), **degrade**, or **use cache and report**.
 
@@ -62,10 +62,6 @@ Gathering earlier in the week is a separate job: another agent (or a manual cita
 In practice: ask the search layer “what do we already hold on player X / fixture Y before this deadline?” → get that slice → one or more models read it and propose claims/adjustments → challenger or policy gates decide what reaches the decision plane — and only then, if needed, go wider.
 
 ## 3. The confidence model
-
-```text
-  
-```
 
 The confidence in the data and the weight it is given in each decision step is likely to evolve and it has done in historical re-runs. We've got multiple different sources and making the decision alongside an agent typically around how to weight something, and whether we should include a source or not, and whether, especially when we're doing historical replays, how and when we weight information, when cutoffs and deadlines are, how many other sources can we use to verify the information provided, everything you typically do to verify evidence. I mention the historical replays there as they've contributed to forming the core decision engine. 
 
