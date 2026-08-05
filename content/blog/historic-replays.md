@@ -1,7 +1,7 @@
 ---
 title: "Historic replays"
 slug: "historic-replays"
-date: 2026-07-30
+date: 2026-08-05
 draft: false
 description: "How historical datasets shaped the engine, what structured Gameweek replays can honestly answer, and where evidence injection fits."
 ---
