@@ -48,6 +48,26 @@ Posts render at the root (`/my-post-slug/`), Bear Blog style. Set
 Blog-owned diagram sources live in `diagrams/`. Diagrams belonging to the FPL
 project stay canonical in the FPL repo (`docs/diagrams/`); export from there.
 
+## Email list (Buttondown)
+
+A quiet signup form appears at the end of posts (and in the footer elsewhere)
+once you set a username. Useful for checking whether visitors convert.
+
+1. Create a free [Buttondown](https://buttondown.com) account.
+2. Copy your username from the Buttondown URL / embedding settings.
+3. Set it in `hugo.yaml`:
+
+   ```yaml
+   params:
+     newsletter:
+       username: "your-username"
+   ```
+
+4. Redeploy. Conversion ≈ new subscribers / unique visitors over the same window
+   (Cloudflare Web Analytics + Buttondown subscriber count is enough).
+
+Leave `username` empty to keep the form hidden.
+
 ## Deployment (Cloudflare Pages)
 
 1. Push this repo to GitHub.

@@ -1,0 +1,32 @@
+{{/*
+  Quiet email signup. Renders only when params.newsletter.username is set.
+  Backed by Buttondown's public embed endpoint — no API key in the browser.
+*/}}
+{{- $n := .Site.Params.newsletter -}}
+{{- if and $n $n.username -}}
+<section class="newsletter" aria-label="Email updates">
+  <p class="newsletter-heading">{{ default "email updates" $n.heading }}</p>
+  <p class="newsletter-blurb">{{ default "Occasional notes when the lab moves. No spam — unsubscribe anytime." $n.blurb }}</p>
+  <form
+    class="newsletter-form"
+    action="https://buttondown.com/api/emails/embed-subscribe/{{ $n.username }}"
+    method="post"
+    target="_blank"
+  >
+    <label class="visually-hidden" for="newsletter-email">Email address</label>
+    <input
+      id="newsletter-email"
+      type="email"
+      name="email"
+      placeholder="you@example.com"
+      autocomplete="email"
+      required
+    />
+    <input type="hidden" name="embed" value="1" />
+    {{- with $n.tag -}}
+    <input type="hidden" name="tag" value="{{ . }}" />
+    {{- end -}}
+    <button type="submit">{{ default "subscribe" $n.button }}</button>
+  </form>
+</section>
+{{- end -}}
