@@ -17,7 +17,7 @@ params:
   # Email list (Buttondown). Form stays hidden until username is set.
   # Create a free account at https://buttondown.com, then paste your username.
   newsletter:
-    username: "" # e.g. ajmclab
+    username: "alastair"
     heading: "email updates"
     blurb: "Occasional notes when the lab moves. No spam — unsubscribe anytime."
     button: "subscribe"
