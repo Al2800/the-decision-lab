@@ -14,6 +14,14 @@ permalinks:
 params:
   description: "Notes on building a reproducible decision laboratory: data, forecasting, optimisation and AI agents — tested against Fantasy Premier League."
   dateFormat: "02 Jan 2006"
+  # Email list (Buttondown). Form stays hidden until username is set.
+  # Create a free account at https://buttondown.com, then paste your username.
+  newsletter:
+    username: "" # e.g. ajmclab
+    heading: "email updates"
+    blurb: "Occasional notes when the lab moves. No spam — unsubscribe anytime."
+    button: "subscribe"
+    tag: "site" # optional Buttondown tag for source tracking
 
 markup:
   highlight:
