@@ -8,11 +8,9 @@ description: "How historical datasets shaped the engine, what structured Gamewee
 
 Historical datasets are how the engine has developed its initial shape and how I check that a decision can be reconstructed and scored, thanks to the open source dataset maintainers!
 
-I've primarily been using the community Gameweek archive people call vaastav, and the Premier League results and odds CSVs from football-data.co.uk. Both sit in the source registry, downloaded locally, kept out of Git and neither is obviously a live feed. They are the training and replay fodundation for the structured side of the system( I am continually adding more where i can).
+I've primarily been using the community Gameweek archive people call vaastav, and the Premier League results and odds CSVs from football-data.co.uk. They are the training and replay fodundation for the structured side of the system( I am continually adding more where i can).
 
-## What do they contain
-
-Vaastav gives player Gameweek rows across roughly a decade: minutes, points, prices, ownership, and in later seasons an xP field and some defensive columns. It is good for asking, given structured stats that should have been roughly knowable at a previous GW deadline. It is not a full picture of what a manager has prior to a game but it gives a foundation to work from. There is no reliable pre-deadline news environment in those files.
+Vaastav gives player Gameweek rows across roughly a decade, including minutes, points, prices, ownership, and in later seasons an xP field and some defensive columns. It is good for  structured stats that should have been roughly knowable at a previous GW deadline. It is not a full picture of what a manager has prior to a game but it gives a foundation to work from. There is no reliable pre-deadline news environment in those files.
 
 football-data.co.uk fills a another gap. Match results and bookmaker odds give market-implied match and clean sheet baselines, and enough history to fit a simple team strength Elo. Player level props are thin historically, so anytime goalscorer style signals are mostly out of reach. Clean sheet and 1X2 probabilities are the usable core.
 
@@ -28,11 +26,11 @@ Second, build baselines that can be rerun and new data introduced or decisions c
 
 ## What a historic replay looks like
 
-A structured replay here is a Gameweek Decision Record produced under a frozen information set. Early on the pilot set was selected Gameweeks in 2023/24 and 2024/25. Since then we have also run a fuller enhanced 2025/26 season replay across all 38 Gameweeks. I ran a few different arms against it, each dealing with the data in a slightly different way. I will go into the numbers properly in a later note. 
+Early on the pilot set was selected Gameweeks in 2023/24 and 2024/25. Since then we have also run a fuller enhanced 2025/26 season replay across all 38 Gameweeks. I ran a few different arms against it, each dealing with the data in a slightly different way. I will go into the numbers properly in a later note. 
 
 ## Injecting evidence into selected Gameweeks
 
-Evidence injection is a different experiment again. Because historical news is not recoverable on bulk, I chose specific game weeks to look back and find news stories and blogs, to see how the pipeline works and what the decision making around it might be, even with a small sample. It was a controlled run by a separate agent to document the data pre a certain daate, have the agent review it, and pull out any relevant signal.
+Evidence injection is a different experiment again. Because historical news is not recoverable on bulk, I chose specific game weeks to look back and find news stories and blogs, to see how the pipeline works and what the decision making around it might be, even with a small sample. It was a controlled run by a separate agent to document the data pre a certain date, have the agent review it, and pull out any relevant signal.
 
 I was checking how it was cited, the confidence scored, what time limits it was given, etc, then once the adjustment is applied, for example a start probability moved from 72% to 61% for a named player, does the ranked plan set change in a way we can measure, and what happens to realised points if we then attach the actual Gameweek outcome. Hard to replicate at the scale I want to do it for the 26/27 season! But the replays can verify parts of the foundational engine and the wiring for the noisier data.
 
