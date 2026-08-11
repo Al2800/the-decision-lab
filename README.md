@@ -76,3 +76,19 @@ Leave `username` empty to keep the form hidden.
 4. Set environment variable `HUGO_VERSION` to `0.164.0`.
 5. Update `baseURL` in `hugo.yaml` to the `*.pages.dev` URL (or a custom
    domain from Cloudflare Registrar later).
+
+## Daily content scout (Cursor Automation)
+
+A scheduled Cloud Agent can scan this repo each day for new posts and team /
+lineup notes, then open a PR with X drafts and blog outlines under
+`content-ideas/`.
+
+1. Open [Cursor Automations](https://cursor.com/automations).
+2. Trigger: **Scheduled → daily** (or cron, e.g. `0 8 * * *` UTC).
+3. Attach **this repository** on `main` (cron defaults to no repo — attach it).
+4. Tools: pull request creation on; Memories on; optional Slack digest.
+5. Prompt: paste [`.cursor/automations/daily-content-scout.md`](.cursor/automations/daily-content-scout.md).
+
+The agent only opens a PR when something meaningful changed. X posts are
+drafted for you to copy — Automations do not post to X natively. See
+[`content-ideas/README.md`](content-ideas/README.md).
