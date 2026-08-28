@@ -114,9 +114,9 @@ The 27 Aug note is still the same 15. Still rolling. Still Bruno (C) for Ipswich
 >
 > Key falsifiers: official Forest source rules Gibbs-White out of Liverpool; Wilson minutes collapse vs Brentford while Rogers/Palmer stay nailed; Haaland limited at Palace while Semenyo hauls; official Spurs XI restores Dubravka over Kinsky; host rescore of Haaland-in vs robust no-Haaland flips the structure once a fresher packet exists.
 
-Gibbs-White is still bootstrap `d` 75% knee. No official Forest URL on that run. Xhaka is the cover so it doesn't have to be a sale on a Thursday.
+Pressers Friday.
 
-The packet is still the old one. Pressers tomorrow, then we see if the 15 actually changes.
+Last data packet Friday as well, then a look at both before any last-minute changes.
 
 ## Current advisory XI (27 Aug)
 
